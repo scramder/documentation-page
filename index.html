@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.22.0/themes/prism-okaidia.css">
+</head>
+
+    <body>
+      <!-- Navbar -->
+      <nav id="navbar">
+        <header>CSS: Cascading Style Sheets</header>
+        <ul>
+          <li><a class="nav-link" href="#Introduction">Introduction</a></li>
+          <li><a class="nav-link" href="#Basic_rule_syntax">Basic rule syntax</a></li>
+          <li><a class="nav-link" href="#Selectors">Selectors</a></li>
+          <li><a class="nav-link" href="#What_is_CSS?">What is CSS?</a></li>
+          <li><a class="nav-link" href="#Fonts_and_text">Fonts and text</a></li>
+          <li><a class="nav-link" href="#CSS:_all_about_boxes">CSS: all about boxes</a></li>
+          <li><a class="nav-link" href="#Conclusion">Conclusion</a></li>
+        </ul>
+      </nav>
+      <!-- Main-doc -->
+      <main id="main-doc">
+        <section class="main-section" id="Introduction">
+          <header>Introduction</header>
+          <article>
+            <p>Cascading Style Sheets (CSS) is a stylesheet language used to describe the 
+              presentation of a document written in HTML or XML (including XML dialects 
+              such as SVG, MathML or XHTML). CSS describes how elements should be
+              rendered on screen, on paper, in speech, or on other media.</p>
+            <p>CSS is among the core languages of the open web and is standardized across 
+              Web browsers according to W3C specifications. Previously, the development 
+              of various parts of CSS specification was done synchronously, which allowed 
+              the versioning of the latest recommendations. You might have heard about 
+              CSS1, CSS2.1, or even CSS3. There will never be a CSS3 or a CSS4; rather, 
+              everything is now CSS without a version number.</p>
+            <p>After CSS 2.1, the scope of the specification increased significantly and 
+              the progress on different CSS modules started to differ so much, that it 
+              became more effective to develop and release recommendations separately per 
+              module. Instead of versioning the CSS specification, W3C now periodically 
+              takes a snapshot of the latest stable state of the CSS specification and individual modules progress. CSS modules now have version
+              numbers, or levels, such as CSS Color Module Level 5.</p>
+          </article>
+        </section>
+        <section class="main-section" id="Basic_rule_syntax">
+          <header>Basic rule syntax</header>
+          <h2>Style rule syntax</h2>
+          <article>
+            <pre><code class="lang-css">
+                style-rule ::=
+                    selectors-list {
+                      properties-list
+                }
+            </code></pre>
+          <h2>Where:</h2>
+            <pre><code class="lang-css">
+                selectors-list ::=
+                    selector[:pseudo-class] [::pseudo-element]
+                    [, selectors-list]
+                
+                properties-list ::=
+                    [property : value] [; properties-list]
+            </code></pre>
+            <p>The syntax for each specified value depends on the data type defined 
+              for each specified property.</p>
+            <h2>Style rule examples</h2>
+            <pre><code class="lang-css">              
+                selectors-list ::=
+                    selector[:pseudo-class] [::pseudo-element]
+                    [, selectors-list]
+                
+                properties-list ::=
+                    [property : value] [; properties-list]               
+                  </code></pre>
+            <p>For a beginner-level introduction to the syntax of selectors, see our 
+              guide on CSS Selectors. Be aware that any syntax error in a rule definition
+              invalidates the entire rule. Invalid rules are ignored by the browser. 
+              Note that CSS rule definitions are entirely (ASCII) text-based, whereas 
+              DOM-CSS / CSSOM (the rule management system) is object-based.</p>
+          </article>
+        </section>
+        <section class="main-section" id="Selectors">
+          <header>Selectors</header>
+          <article>
+            <p>The following are the various selectors, which allow styles to be conditional 
+              based on various features of elements within the DOM.</p>
+            <h2>Basic selectors</h2>
+            <p>Basic selectors are fundamental selectors; these are the most basic selectors 
+              that are frequently combined to create other, more complex selectors.</p>
+            <ul>
+              <li>Universal selector <span class="selectors"> * </span></li>
+              <li>Type selector <span class="selectors"> elementname </span></li>
+              <li>Class selector <span class="selectors"> .classname </span></li>
+              <li>ID selector <span class="selectors"> #idname </span></li>
+              <li>Attribute selector <span class="selectors"> [attr=value] </span></li>
+            </ul>
+            <h2>Grouping selectors</h2>
+            <h3>Selector list <span class="selectors">A, B</span></h3>
+            <p>Specifies that both A and B elements are selected. This is a grouping method to 
+              select several matching elements.</p>
+            <h3>Combinators</h3>
+            <p>Combinators are selectors that establish a relationship between two or more 
+              simple selectors, such as "A is a child of B" or "A is adjacent to B", creating 
+              a complex selector.</p>
+            <h3>Adjacent sibling combinator A + B</h3>
+            <p>Specifies that the elements selected by both A and B have the same parent and 
+              that the element selected by B immediately follows the element selected by A 
+              horizontally.</p>
+            <h3>General sibling combinator A ~ B</h3>
+            <p>Specifies that the elements selected by both A and B share the same parent 
+              and that the element selected by A comes before—but not necessarily immediately 
+              before—the element selected by B.</p>
+            <h3>Child combinator A > B</h3>
+            <p>Specifies that the element selected by B is a descendant of the element 
+              selected by A, but is not necessarily a direct child.</p>
+            <h3>Column combinator A || B Experimental</h3>
+            <p>Specifies that the element selected by B is located within the table column 
+              specified by A. Elements which span multiple columns are considered to be a 
+              member of all of those columns.</p>
+            <h2>Pseudo</h2>
+            <h3>Pseudo classes :</h3>
+            <p>Specifies a special state of the selected element(s).</p>
+            <h3>Pseudo elements ::</h3>
+            <p>Represents entities that are not included in HTML.</p>
+          </article>
+        </section>
+        <section class="main-section" id="What_is_CSS?">
+          <header>What is CSS?</header>
+          <article>
+            <p>Like HTML, CSS is not a programming language. It's not a markup language 
+              either. CSS is a style sheet language. CSS is what you use to selectively 
+              style HTML elements. For example, this CSS selects paragraph text, 
+              setting the color to red:</p>
+            <pre><code class="lang-css">
+              p {
+                color: red;
+              }
+            </code></pre>
+            <p>Let's try it out! Using a text editor, paste the three lines of CSS 
+              (above) into a new file. Save the file as <span class="selectors">style.css</span> in a directory named 
+              <span class="selectors">styles</span>.</p>
+              <p>To make the code work, we still need to apply this CSS (above) to your 
+                HTML document. Otherwise, the styling won't change the appearance of 
+                the HTML. (If you haven't been following our project, pause here to 
+                read <a class="link" href="https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/Dealing_with_files">Dealing with files</a> 
+                and <a class="link" href="https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/HTML_basics">HTML basics</a> HTML basics.)</p>
+            <ol>
+              <li>
+                <p>Open your <span class="selectors">index.html</span> file. Paste the following line in the head 
+                  (between the <span class="selectors">&lthead&gt</span> and <span class="selectors">&lt/head&gt</span> tags):</p>
+                <pre><code class="lang-html">&lt;link href="styles/style.css" rel="stylesheet" /&gt;</code></pre>
+              </li>
+              <li>
+                <p>Save <span class="selectors">index.html</span> and load it in your browser. You should see something like this:</p>
+              </li>
+            </ol>
+            <img src="https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/CSS_basics/website-screenshot-styled.png" alt="moz_img">
+            <p>If your paragraph text is red, congratulations! Your CSS is working.</p>
+            <br>
+            <h2>Anatomy of a CSS ruleset</h2>
+            <p>Let's dissect the CSS code for red paragraph text to understand how it works:</p>
+            <img src="https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/CSS_basics/css-declaration-small.png" alt="css">
+            <p>The whole structure is called a ruleset. (The term ruleset is often 
+              referred to as just rule.) Note the names of the individual parts:</p>
+            <h2>Selector</h2>
+            <p>This is the HTML element name at the start of the ruleset. It defines 
+              the element(s) to be styled (in this example, <span class="selectors">&ltp&gt</span> elements). To 
+              style a different element, change the selector.</p>
+            <h2>Declaration</h2>
+            <p>This is a single rule like <span class="selectors">color: red;</span>. It specifies which of the 
+              element's properties you want to style.</p>
+            <h2>Properties</h2>
+            <p>These are ways in which you can style an HTML element. (In this 
+              example, <span class="selectors">color</span> is a property of the <span class="selectors">&ltp&gt</span> elements.) In CSS, you choose 
+              which properties you want to affect in the rule.</p>
+            <h2>Property value</h2>
+            <p>To the right of the property—after the colon—there is the property value. 
+              This chooses one out of many possible appearances for a given property. 
+              (For example, there are many <span class="selectors">color</span> values in addition to <span class="selectors">red</span>.)</p>
+            <h2>Note the other important parts of the syntax:</h2>
+            <ul>
+              <li>
+                <p>Apart from the selector, each ruleset must be wrapped in curly braces. <span class="selectors">({})</span></p>
+                </li>
+              <li>
+                <p>Within each declaration, you must use a colon <span class="selectors">(:)</span> to separate the 
+                property from its value or values.</p>
+              </li>
+              <li>
+                <p>Within each ruleset, you must use a semicolon <span class="selectors">(;)</span> to separate each declaration 
+                from the next one.</p>
+              </li>
+            </ul>
+            <p>To modify multiple property values in one ruleset, write them separated 
+              by semicolons, like this:</p>
+            <pre><code class="lang-css">
+              p {
+                color: red;
+                width: 500px;
+                border: 1px solid black;
+              }
+            </code></pre>
+            <h2>Selecting multiple elements</h2>
+            <p>You can also select multiple elements and apply a single ruleset to all of 
+              them. Separate multiple selectors by commas. For example:</p>
+            <pre><code class="lang-css">
+              p,
+              li,
+              h1 {
+                color: red;
+              }
+            </code></pre>
+            <h1>Different types of selectors</h1>
+            <p>There are many different types of selectors. The examples above use element 
+              selectors, which select all elements of a given type. But we can make more 
+              specific selections as well. Here are some of the more common types of selectors:</p>
+              <table class="standard-table no-markdown">
+                <thead>
+                  <tr>
+                    <th scope="col">Selector name</th>
+                    <th scope="col">What does it select</th>
+                    <th scope="col">Example</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Element selector (sometimes called a tag or type selector)</td>
+                    <td>All HTML elements of the specified type.</td>
+                    <td><code>p</code><br>selects <code>&lt;p&gt;</code></td>
+                  </tr>
+                  <tr>
+                    <td>ID selector</td>
+                    <td>
+                      The element on the page with the specified ID. On a given HTML page,
+                      each id value should be unique.
+                    </td>
+                    <td>
+                      <code>#my-id</code><br>selects <code>&lt;p id="my-id"&gt;</code> or
+                      <code>&lt;a id="my-id"&gt;</code>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Class selector</td>
+                    <td>
+                      The element(s) on the page with the specified class. Multiple instances
+                      of the same class can appear on a page.
+                    </td>
+                    <td>
+                      <code>.my-class</code><br>selects
+                      <code>&lt;p class="my-class"&gt;</code> and
+                      <code>&lt;a class="my-class"&gt;</code>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Attribute selector</td>
+                    <td>The element(s) on the page with the specified attribute.</td>
+                    <td>
+                      <code>img[src]</code><br>selects
+                      <code>&lt;img src="myimage.png"&gt;</code> but not
+                      <code>&lt;img&gt;</code>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Pseudo-class selector</td>
+                    <td>
+                      The specified element(s), but only when in the specified state. (For
+                      example, when a cursor hovers over a link.)
+                    </td>
+                    <td>
+                      <code>a:hover</code><br>selects <code>&lt;a&gt;</code>, but only when
+                      the mouse pointer is hovering over the link.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            <p>There are many more selectors to discover. To learn more, see the MDN 
+              <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors">Selectors guide</a>.</p>
+          </article>
+        </section>        
+        <section class="main-section" id="Fonts_and_text">
+          <header>Fonts and text</header>
+            <article>
+            <p>Now that we've explored some CSS fundamentals, let's improve the 
+              appearance of the example by adding more rules and information to 
+              the style.css file.</p>
+              <ol>
+                <li>
+                  <p>First,<a href="https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/What_will_your_website_look_like#font">find the output from Google Fonts</a> that you previously 
+                    saved from <a href="https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/What_will_your_website_look_like">What will your website look like?</a>. Add the 
+                    <span class="selectors"><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link"> &ltlink&gt </a></span>
+                    element somewhere inside your <span class="selectors">index.html</span> head (anywhere between 
+                    the <span class="selectors"><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/head">&lthead&gt</a></span> and <span class="selectors">&lt/head&gt</span> tags). It looks something like this:</p>
+                    <pre><code class="lang-html">
+                      &ltlink
+                          href="https://fonts.googleapis.com/css?family=Open+Sans"
+                          rel="stylesheet" /&gt
+                    </code></pre>
+                    <p>This code links your page to a style sheet that loads the 
+                      Open Sans font family with your webpage.</p>
+                </li>
+                <li>
+                  <p>Next, delete the existing rule you have in your <span class="selectors">style.css</span> file. 
+                    It was a good test, but let's not continue with lots of red text.</p>
+                </li>
+                <li>
+                  <p>Add the following lines (shown below), replacing the <span class="selectors">font-family</span> 
+                    assignment with your <span class="selectors">font-family</span> selection from 
+                    <a class="link" href="https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/What_will_your_website_look_like#font">What will your website look like?</a>. 
+                    The property <span class="selectors">font-family</span> refers to the font(s) you want 
+                    to use for text. This rule defines a global base font and font size for 
+                    the whole page. Since <span class="selectors"><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/html">&lthtml&gt</a></span>  is the parent element of the whole 
+                    page, all elements inside it inherit the same <span class="selectors">font-size</span> and <span class="selectors">font-family</span>.</p>
+                  <pre><code class="lang-css">
+                    html {
+                      font-size: 10px; /* px means "pixels": the base font size is now 10 pixels high */
+                      font-family: "Open Sans", sans-serif; /* this should be the rest of the output you got from Google Fonts */
+                    }      
+                  </code></pre>
+                  <p class="note">Note: Anything in CSS between /* and */ is a CSS comment. 
+                    The browser ignores comments as it renders the code. CSS comments are 
+                    a way for you to write helpful notes about your code or logic.</p>
+                </li>
+                <li>
+                  <p>Now let's set font sizes for elements that will have text inside the 
+                    HTML body (<span class="selectors">&lth1&gt</span>, <span class="selectors">&ltli&gt</span>, and <span class="selectors">&ltp&gt</span>). We'll also center the 
+                    heading. Finally, let's expand the second ruleset (below) with settings 
+                    for line height and letter spacing to make body content more readable.</p>
+                  <pre><code class="lang-css">
+                    h1 {
+                      font-size: 60px;
+                      text-align: center;
+                    }
+                    
+                    p,
+                    li {
+                      font-size: 16px;
+                      line-height: 2;
+                      letter-spacing: 1px;
+                    }      
+                  </code></pre>
+                </li>
+              </ol>
+            <p>Adjust the <span class="selectors">px</span> values as you like. Your work-in-progress should look similar to this:</p>
+            <img src="https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/CSS_basics/website-screenshot-font-small.png" alt="moz_img">
+            </article>
+        </section>
+        <section class="main-section" id="CSS:_all_about_boxes">
+          <header>CSS: all about boxes</header>
+          <article>
+            <p>Something you'll notice about writing CSS: a lot of it is about boxes. 
+              This includes setting size, color, and position. Most HTML elements on 
+              your page can be thought of as boxes sitting on top of other boxes.</p>
+            <img src="https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/CSS_basics/boxes.jpg" alt="box-img">
+            <p>Photo from <a class="link" href="https://www.geograph.org.uk/photo/3418115">https://www.geograph.org.uk/photo/3418115</a>  Copyright © <a class="link" href="https://www.geograph.org.uk/profile/26362">Jim Barton</a> <a class="link" href="https://creativecommons.org/licenses/by-sa/2.0/">cc-by-sa/2.0</a></p>
+            <p>CSS layout is mostly based on the box model. Each box taking up space 
+              on your page has properties like:</p>
+            <ul>
+              <li>
+                <p><span class="selectors">padding</span>, the space around the content. In the example below, it is 
+                the space around the paragraph text.</p>
+              </li>
+              <li>
+                <p><span class="selectors">border</span>, the solid line that is just outside the padding.</p>
+              </li>
+              <li>
+                <p><span class="selectors">margin</span>, the space around the outside of the border.</p>
+              </li>
+            </ul>
+              <img src="https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/CSS_basics/box-model.png" alt="boxes-img">
+            <h2>In this section we also use:</h2>
+            <ul>
+              <li>
+                <p><span class="selectors">width</span> (of an element).</p>
+              </li>
+              <li>
+                <p><span class="selectors">background-color</span>, the color behind an element's content and padding.</p>                
+              </li>
+              <li>
+                <p><span class="selectors">color</span>, the color of an element's content (usually text).</p>
+              </li>
+              <li>
+                <p><span class="selectors">text-shadow</span> sets a drop shadow on the text inside an element.</p>
+              </li>
+              <li>
+                <p><span class="selectors">display</span> sets the display mode of an element. (keep reading to learn more)</p> 
+              </li>
+            </ul>
+            <p>To continue, let's add more CSS. Keep adding these new rules at the 
+              bottom of <span class="selectors">style.css</span>. Experiment with changing values to see what happens.</p>
+            <h2>Changing the page color</h2>
+            <pre><code class="lang-css">
+              html {
+                background-color: #00539f;
+              }
+              
+            </code></pre>
+            <p>This rule sets a background color for the entire page. Change the color 
+              code to <a href="https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/What_will_your_website_look_like#theme_color">the color you chose in What will my website look like?</a> .</p>
+            <h2>Styling the body</h2>
+            <pre><code class="lang-css">
+              body {
+                width: 600px;
+                margin: 0 auto;
+                background-color: #ff9500;
+                padding: 0 20px 20px 20px;
+                border: 5px solid black;
+              }  
+            </code></pre>
+            <p>There are several declarations for the <span class="selectors"><a class="link" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/body">&ltbody&gt</a></span>  element. Let's go through 
+              these line-by-line:</p>
+              <ul>
+                <li>
+                  <p><span class="selectors">width: 600px;</span>  This forces the body to always be 600 pixels wide.</p>
+                </li>
+                <li>
+                  <p><span class="selectors">margin: 0 auto;</span> When you set two values on a property like <span class="selectors">margin</span> or 
+                  <span class="selectors">padding</span>, the first value affects the element's top and bottom side 
+                  (setting it to <span class="selectors">0</span> in this case); the second value affects the left and 
+                  right side. (Here, <span class="selectors">auto</span> is a special value that divides the available 
+                  horizontal space evenly between left and right). You can also use one, 
+                  two, three, or four values, as documented in <a class="link" href="https://developer.mozilla.org/en-US/docs/Web/CSS/margin#syntax">Margin Syntax</a>.</p>
+                </li>
+                <li>
+                  <p><span class="selectors">background-color: #FF9500;</span> This sets the element's background color. 
+                  This project uses a reddish orange for the body background color, as 
+                  opposed to dark blue for the <span class="selectors"><a class="link" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/html">&lthtml&gt</a></span>element. (Feel free to experiment.)</p>
+                </li>
+                <li>
+                  <p><span class="selectors">padding: 0 20px 20px 20px; </span> This sets four values for padding. The goal 
+                  is to put some space around the content. In this example, there is no 
+                  padding on the top of the body, and 20 pixels on the right, bottom and 
+                  left. The values set top, right, bottom, left, in that order. As with 
+                  <span class="selectors">margin</span>, you can use one, two, three, or four values, as documented in 
+                  <a class="link" href="https://developer.mozilla.org/en-US/docs/Web/CSS/padding#syntax">Padding Syntax</a>.</p>
+                </li>
+                <li>
+                  <p><span class="selectors">border: 5px solid black;</span> This sets values for the width, style and 
+                    color of the border. In this case, it's a five-pixel-wide, solid black 
+                    border, on all sides of the body.</p>
+                </li>
+              </ul>
+              <h2>Positioning and styling the main page title</h2>
+              <pre><code class="lang-css">
+                h1 {
+                  margin: 0;
+                  padding: 20px 0;
+                  color: #00539f;
+                  text-shadow: 3px 3px 1px black;
+                }            
+              </code></pre>
+              <p>You may have noticed there's a horrible gap at the top of the body. That 
+                happens because browsers apply default styling to the <span class="selectors"><a class="selectors" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements">&lth1&gt</a></span>  element 
+                (among others). That might seem like a bad idea, but the intent is to 
+                provide basic readability for unstyled pages. To eliminate the gap, we 
+                overwrite the browser's default styling with the setting margin: 0;.</p>
+              <p>Next, we set the heading's top and bottom padding to 20 pixels.</p>
+              <p>Following that, we set the heading text to be the same color as the 
+                HTML background color.</p>
+              <p>Finally, <span class="selectors">text-shadow</span>applies a shadow to the text content of the element.
+                Its four values are:</p>
+              <ul>
+                <li>
+                  <p>The first pixel value sets the horizontal offset of the shadow from 
+                    the text: how far it moves across.</p>
+                </li>
+                <li>
+                  <p>The second pixel value sets the vertical offset of the shadow from 
+                    the text: how far it moves down.</p>
+                </li>
+                <li>
+                  <p>The third pixel value sets the blur radius of the shadow. A larger 
+                    value produces a more fuzzy-looking shadow.</p>
+                </li>
+                <li>
+                  <p>The fourth value sets the base color of the shadow.</p>
+                </li>
+              </ul>
+              <p>Try experimenting with different values to see how it changes the appearance.</p>
+              <h2>Centering the image</h2>
+              <pre><code class="lang-css">
+                img {
+                  display: block;
+                  margin: 0 auto;
+                }              
+              </code></pre>
+              <p>Next, we center the image to make it look better. We could use the
+                <span class="selectors">margin: 0 auto</span> trick again as we did for the body. But there are differences that 
+                require an additional setting to make the CSS work.</p>
+              <p>The <span class="selectors"><a class="link" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/body">&ltbody&gt</a></span> is a block element, meaning it takes up space on the page. 
+                The margin applied to a block element will be respected by other elements 
+                on the page. In contrast, images are inline elements, for the auto margin 
+                trick to work on this image, we must give it block-level behavior using 
+                <span class="selectors">display: block;</span>.</p>
+              <p class="note">Note: The instructions above assume that you're using an 
+                image smaller than the width set on the body. (600 pixels) If your image 
+                is larger, it will overflow the body, spilling into the rest of the page. 
+                To fix this, you can either: 1) reduce the image width using a 
+                <a class="link" href="https://en.wikipedia.org/wiki/Raster_graphics_editor">graphics editor</a>, 
+                or 2) use CSS to size the image by setting the <span class="selectors">width</span> property on 
+                the <span class="selectors">&ltimg&gt</span> element with a smaller value.</p>
+              <p class="note">Note: Don't be too concerned if you don't completely 
+                understand display: block; or the differences between a block element 
+                and an inline element. It will make more sense as you continue your 
+                study of CSS. You can find more information about different display 
+                values on MDN's <a class="link" href="https://developer.mozilla.org/en-US/docs/Web/CSS/display">display reference page</a> .</p>
+          </article>
+        </section>
+        <section class="main-section" id="Conclusion">
+          <header>Conclusion</header>
+          <article>
+            <p>If you followed all the instructions in this article, you should have a 
+              page that looks similar to this one:</p>
+            <img src="https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/CSS_basics/website-screenshot-final.png" alt="moz_img">
+            <p>(You can <a class="link" href="https://mdn.github.io/beginner-html-site-styled/">view our version here</a> .) If you get stuck, you can always 
+              compare your work with our <a class="link" href="finished example code on GitHub"></a> .</p>
+            <p>In this exercise, we have just scratched the surface of CSS. To go 
+              further, <a class="link" href="https://developer.mozilla.org/en-US/docs/Learn/CSS">see Learning to style HTML using CSS</a>.</p>
+          </article>
+        </section>
+      </main>
+      <script src="https://cdn.jsdelivr.net/npm/prismjs@1.22.0/prism.js"></script>
+    </body>
+</html>

@@ -1,0 +1,152 @@
+html,
+body {
+  min-width: 290px;
+  color: #ffffff;
+  background-color: #383737;
+  font-family: 'Open Sans', Arial, sans-serif;
+  line-height: 1.5;
+  
+}
+h2, h3{
+  color: rgb(200, 200, 200)
+}
+
+a {
+  background-color: gray;
+  transition: background-color 0.5s;
+}
+a:hover {
+  background-color: white;
+}
+
+a.link{
+  text-decoration: none;
+  color:#4c4c4d;
+  background-color: none;
+
+}
+
+table td, table th {
+  border: 2px solid;
+  border-style: inherit;
+  padding: 0.5rem 0.75rem;
+  vertical-align: middle;
+  border-spacing: 0;
+  
+}
+table.properties tr:nth-child(odd) td, table.properties tr:nth-child(odd) th, table.standard-table tr:nth-child(odd) td, table.standard-table tr:nth-child(odd) th {
+  background-color: #414141;
+}
+
+#navbar {
+  position: fixed;
+  min-width: 290px;
+  top: 0px;
+  left: 0px;
+  width: 300px;
+  height: 100%;
+  border-right: solid;
+  border-color: rgba(0, 22, 22, 0.4);
+}
+
+header {
+  color: rgb(235, 235, 235);
+  margin: 10px;
+  text-align: center;
+  font-size: 1.8em;
+  font-weight: thin;
+}
+
+#main-doc header {
+  text-align: left;
+  margin: 0px;
+  color:rgb(235, 235, 235)
+}
+
+#navbar ul {
+  height: 88%;
+  padding: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+#navbar li {
+  color: #4d4e53;
+  border-top: 1px solid;
+  list-style: none;
+  position: relative;
+  width: 100%;
+}
+
+#navbar a {
+  display: block;
+  padding: 10px 30px;
+  color: #4d4e53;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#main-doc {
+  position: absolute;
+  margin-left: 310px;
+  padding: 20px;
+  margin-bottom: 110px;
+  color:rgb(235, 235, 235)
+}
+
+section article {
+  color: rgb(235, 235, 235);
+  margin: 15px;
+  font-size: 0.96em;
+  
+}
+
+section li {
+  margin: 15px 0px 0px 20px;
+}
+.selectors{
+  background-color: rgb(70, 70, 70);
+  color: rgb(223, 222, 222);
+  border-radius: 5%;
+  font-size: 1em;
+  font-family: 'Courier New', Courier, monospace;
+  padding: 0.125rem 0.25rem;
+
+}
+p.note {
+  border-left: 5px solid rgb(46, 46, 252);
+  background-color: black;
+  color: white;
+  padding: 10px;
+}
+
+@media only screen and (max-width: 815px) {
+  /* For mobile phones: */
+  #navbar ul {
+    height: 400px;
+  }
+
+  #navbar {
+    position: absolute;
+    top: 0;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    max-height: 400px;
+    border: none;
+    z-index: 1;
+  }
+
+  #main-doc {
+    position: relative;
+    margin-left: 0px;
+    margin-top: 400px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  #main-doc {
+    margin-left: -10px;
+  }
+
+}
